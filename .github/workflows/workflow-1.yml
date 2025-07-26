@@ -3,7 +3,8 @@ on: push
 
 
 jobs:
-    echo:
+    echo: 
+        needs: show_README
         runs-on: ubuntu-latest
         steps:
             - name: Welcome 
@@ -27,5 +28,5 @@ jobs:
               uses: actions/checkout@v4
             - name: Run a script
               run: |
-                ls -lhrt
-                cat README.md
+                    chmod +x .github\workflows\script.sh
+                    ./show.sh

@@ -15,7 +15,6 @@ jobs:
 
       - name: Docker Build
         
-            
         run: docker build -t docker.io/${{ vars.DOCKER_USERNAME }}/$IMAGE_NAME:latest .
 
 
@@ -24,7 +23,7 @@ jobs:
 
 
       - name: Docker Publish
-        run: docker push docker.io/${{ vars.DOCKER_USERNAME }}/$IMAGE_NAME:latest
+        run: docker push ${{ vars.regestiry_url }}/${{ vars.DOCKER_USERNAME }}/$IMAGE_NAME:latest
 
   deploy:
     needs: docker

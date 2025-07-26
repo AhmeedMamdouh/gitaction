@@ -31,4 +31,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Docker Run
-        run: docker run -d -p 8080:80 docker.io/$DOCKER_USERNAME/$IMAGE_NAME:latest
+        run: docker run -d -p 8080:80 docker.io/${{ vars.DOCKER_USERNAME }}/$IMAGE_NAME:latest

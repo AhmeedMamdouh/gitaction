@@ -27,5 +27,8 @@ jobs:
     needs: docker
     runs-on: ubuntu-latest
     steps:
+      - name: Docker Login
+        run:  echo "${{ secrets.DOCKER_PASSWORD }}" | docker login ${{ vars.REG_URL }} --username ${{ vars.DOCKER_USERNAME }} --password-stdin 
+      
       - name: Docker Run
         run: docker run -d -p 8080:80 ${{ vars.REG_URL }}/$IMAGE_NAME:latest

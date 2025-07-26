@@ -1,0 +1,33 @@
+name: Exploring Variables and Secrets
+
+
+on:
+  workflow_dispatch:
+
+env:
+    IMAGE_NAME: github-actions-nginx
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: Docker Build
+        
+            
+        run: docker build -t docker.io/${{ vars.DOCKER_USERNAME }}/$IMAGE_NAME:latest
+
+
+      - name: Docker Login
+        run: docker login --username=$DOCKER_USERNAME --password=${{ secrets.DOCKER_PASSWORD }}
+
+
+      - name: Docker Publish
+        run: docker push ${{ var.REG_URL}}/${{ env.DOCKER_USERNAME }}/$IMAGE_NAME:latest
+
+
+  deploy:
+    needs: docker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Docker Run
+        run: docker run -d -p 8080:80 docker.io/$DOCKER_USERNAME/$IMAGE_NAME:latest

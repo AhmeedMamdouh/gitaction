@@ -3,13 +3,24 @@ on: push
 
 
 jobs:
-    ahmed:
+    echo:
         runs-on: ubuntu-latest
         steps:
             - name: Welcome 
               run: |
                 echo "Hello world"
+            
+            - name: checkout code
+              uses: actions/checkout@v4
+                
+            - name: Install cowsay
+              run: |
                 sudo apt update -y
                 sudo apt install cowsay -y
                 cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> dragon.txt
                 cat dragon.txt
+            
+            - name: Run a script
+              run: |
+                ls -lhrt
+                cat readme.md

@@ -15,7 +15,7 @@ jobs:
 
       - name: Docker Build
         
-        run: docker build -t githubactionsiti2025.azurecr.io/githubactionsiti2025/${{ env.IMAGE_NAME }}:latest .
+        run: docker build -t githubactionsiti2025.azurecr.io/githubactionsiti2025/${{ env.IMAGE_NAME }}:AhmedMamdouh .
              
       - name: Docker Login
         run:  echo "${{ secrets.DOCKER_PASSWORD }}" | docker login ${{ vars.REG_URL }} --username ${{ vars.DOCKER_USERNAME }} --password-stdin 

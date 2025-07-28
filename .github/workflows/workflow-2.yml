@@ -21,7 +21,7 @@ jobs:
         run:  echo "${{ secrets.DOCKER_PASSWORD }}" | docker login ${{ vars.REG_URL }} --username ${{ vars.DOCKER_USERNAME }} --password-stdin 
 
       - name: Docker Publish
-        run: docker push ${{ vars.REG_URL }}/${{ vars.DOCKER_USERNAME }}/$IMAGE_NAME:latest
+        run: docker push ${{ vars.REG_URL }}/${{ vars.DOCKER_USERNAME }}/$IMAGE_NAME:AhmedMamdouh
 
   deploy:
     needs: docker
@@ -31,4 +31,4 @@ jobs:
         run:  echo "${{ secrets.DOCKER_PASSWORD }}" | docker login ${{ vars.REG_URL }} --username ${{ vars.DOCKER_USERNAME }} --password-stdin 
       
       - name: Docker Run
-        run: docker run -d -p 8080:80 ${{ vars.REG_URL }}/${{ vars.DOCKER_USERNAME }}/$IMAGE_NAME:latest
+        run: docker run -d -p 8080:80 ${{ vars.REG_URL }}/${{ vars.DOCKER_USERNAME }}/$IMAGE_NAME:AhmedMamdouh
